@@ -1,0 +1,74 @@
+body{
+    margin: 0px;
+    background-color: aliceblue;
+}
+
+.tasksToolbar {
+    padding: 0;
+    margin: 0;
+
+    opacity: 1;
+}
+
+.tasksToolbar .tasksToolbar-title {
+    align-items: center;
+    display: flex;
+}
+// .listTitle {
+//     color: #34373d;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     font-size: 2rem;
+//     font-weight: 600;
+//     padding: 6px 8px;
+// }
+
+.flexBoxFix {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.baseAdd {
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    // align-items: center;
+}
+
+.baseAdd.addTask .baseAdd.loadTask {
+    box-shadow: 0 17px 0 -16px #e5e5e5;
+    padding: 0 13px;
+}
+
+// button {
+//     background: none;
+//     width: 100%;
+//     height: 100%;
+//     border: none;
+//     box-shadow: none;
+//     cursor: pointer;
+//     text-align: left;
+// }
+
+.baseAdd .baseAddButton .baseAdd .loadButton {
+    width: 82px;
+    height: 52px;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+// .list span {
+//     display: none;
+// }
+
+.title {
+    cursor: pointer;
+}
+
+table{
+    border: 2px;
+}
