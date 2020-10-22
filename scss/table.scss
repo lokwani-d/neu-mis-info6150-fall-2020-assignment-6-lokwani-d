@@ -1,0 +1,30 @@
+// This scss contains the layout of my table
+table{
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+  
+  }
+  .oddRow{
+    background-color: #5b83a3;
+  
+  }
+  .evenRow{
+    background-color: #536472;
+  }
+  #deleteBtn{
+    border-width: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+  }
+  tr td {
+    font-size: 16px;
+    color: whitesmoke;
+  }
+  
+  td{
+    align-items: baseline;
+    text-align: left;
+  
+  }

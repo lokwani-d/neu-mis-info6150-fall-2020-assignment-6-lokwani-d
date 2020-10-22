@@ -8,15 +8,17 @@
 </head>
 
 <body>
+    <!-- Div for the overal control/tools of the tasklist -->
     <div class="tasksToolbar" id="tasksToolbar">
+        <!-- Div for the title -->
         <div class="tasksToolbar-title" id="tasksToolbar-title">
             <h2 class="listTitle"><span>My Todo List</span></h2>
         </div>
-
+        <!-- Div for the loadTask button -->
         <div class="baseAdd loadTask">
             <button id="loadButton" class="loadButton" type="button" aria-label="Load Tasks">Load Tasks </button>
         </div>
-
+        <!-- Div for the add task flex box -->
         <div class="flexBoxFix">
             <div class="baseAdd addTask" id="form">
                 <input type="text" id="inputTitle" placeholder="Title...">
@@ -28,8 +30,10 @@
         </div>
 
     </div>
+    <!-- Div for the list to be displayed -->
     <div class="list" id="list-container">
     </div>
+    <!-- importing the javascript to be run on the engine -->
     <script src="./js/toDoScript.js"></script>
 
 </body>
