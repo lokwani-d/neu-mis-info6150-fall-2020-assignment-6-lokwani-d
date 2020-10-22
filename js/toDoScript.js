@@ -11,16 +11,29 @@ let alreadyLoaded = false;
 addButton.addEventListener('click', () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    // const inputTitle = document.createTextNode(document.getElementById("inputTitle").value);
-    // viewButton = document.createElement("input");
-    // viewButton.type = "button";
-    // viewButton.value = "View";
-    // viewButton.classList.add('viewButton');
-    // viewButton.id=document.getElementById("inputTitle").value;
-    // viewButton.setAttribute=document.getElementById("inputTitle").value;
-    // container.append(inputTitle);
-    // container.append(viewButton);
-    container.append(checkbox);
+    const summary = document.createElement('summary');
+    const details =  document.createElement('details');
+    summary.innerHTML = document.getElementById('inputTitle').value;
+    details.append("Description: ", document.getElementById('inputDescription').value, document.createElement('br'));
+    details.append("Due Date: ", document.getElementById('inputDate').value, document.createElement('br'));
+    details.append("Due Time: ", document.getElementById('inputTime').value);
+
+    this.createRow(checkbox, summary, details);
+ 
+    // const table=document.createElement("table");
+    // const tr = document.createElement('tr');
+    // const td1 = document.createElement('td');
+    // const td2 = document.createElement('td');
+    // const td3 = document.createElement('td');
+
+    
+    // td1.appendChild(checkbox);
+    // td2.appendChild(summary);
+    // td3.appendChild(details);
+    // tr.appendChild(td1);
+    // tr.appendChild(td2);
+    // tr.appendChild(td3);
+    // container.appendChild(tr);
 
 });
 
@@ -60,24 +73,43 @@ const populate = (contents) => {
         details.append("Due Date: ", todoItem.date, document.createElement('br'));
         details.append("Due Time: ", todoItem.time);
         
+        this.createRow(checkbox, summary, details);
 
-        const table=document.createElement("table");
-        const tr = document.createElement('tr');
-        const td1 = document.createElement('td');
-        const td2 = document.createElement('td');
-        const td3 = document.createElement('td');
+        // const table=document.createElement("table");
+        // const tr = document.createElement('tr');
+        // const td1 = document.createElement('td');
+        // const td2 = document.createElement('td');
+        // const td3 = document.createElement('td');
 
         
-        td1.appendChild(checkbox);
-        td2.appendChild(summary);
-        td3.appendChild(details);
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        container.appendChild(tr);
+        // td1.appendChild(checkbox);
+        // td2.appendChild(summary);
+        // td3.appendChild(details);
+        // tr.appendChild(td1);
+        // tr.appendChild(td2);
+        // tr.appendChild(td3);
+        // container.appendChild(tr);
        
         
     });
+}
+
+function createRow(checkbox, summary, details){
+    // const table=document.createElement("table");
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
+    const td3 = document.createElement('td');
+
+    
+    td1.appendChild(checkbox);
+    td2.appendChild(summary);
+    td3.appendChild(details);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    table.appendChild(tr);
+    container.appendChild(table);
 }
 // const populate = (contents) => {
 //     contents.forEach((todoItem, i) => {
