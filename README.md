@@ -39,7 +39,7 @@ ________________________________
 #### License
 [MIT License](https://opensource.org/licenses/MIT)
 
-Connect with me on LinkedIn : 
+Connect with me on LinkedIn :   
 #####[Deepak Lokwani](https://www.linkedin.com/in/deepaklokwani1/)
 
 #### NUID 
