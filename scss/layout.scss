@@ -1,74 +1,95 @@
-body{
-    margin: 0px;
-    background-color: aliceblue;
-}
-
-.tasksToolbar {
-    padding: 0;
+body {
+    background-color: aliceblue; 
+    padding: 50px 80px;
+  }
+  
+  .tasksToolbar {
+    padding: 10px;
     margin: 0;
-
-    opacity: 1;
-}
-
-.tasksToolbar .tasksToolbar-title {
+   }
+  
+  
+  .tasksToolbar .tasksToolbar-title {
     align-items: center;
-    display: flex;
-}
-// .listTitle {
-//     color: #34373d;
-//     white-space: nowrap;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     font-size: 2rem;
-//     font-weight: 600;
-//     padding: 6px 8px;
-// }
-
-.flexBoxFix {
+    text-align: center;
+    background-color: #536472;
+    padding: 30px 0px;
+    color: white;
+    text-align: center;
+   }
+   .flexBoxFix {
     flex-direction: column;
     display: flex;
     flex: 1;
-    overflow: hidden;
-}
-
-.baseAdd {
+    overflow: hidden; }
+  
+  .baseAdd {
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    display: flex;
-    // align-items: center;
-}
-
-.baseAdd.addTask .baseAdd.loadTask {
+    display: flex; }
+  
+   input {
+    border: none;
+    border-radius: 0;
+    width: 98.9%;
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+   button{
+    padding: 12px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+   
+   }
+   .baseAdd.addTask .baseAdd.loadTask {
     box-shadow: 0 17px 0 -16px #e5e5e5;
-    padding: 0 13px;
-}
-
-// button {
-//     background: none;
-//     width: 100%;
-//     height: 100%;
-//     border: none;
-//     box-shadow: none;
-//     cursor: pointer;
-//     text-align: left;
-// }
-
-.baseAdd .baseAddButton .baseAdd .loadButton {
+    padding: 0 13px; }
+    
+  .baseAdd .baseAdd.addTask .baseAddButton .baseAdd .loadButton {
     width: 82px;
     height: 52px;
     padding: 4px;
-    flex-shrink: 0;
-}
+    flex-shrink: 0; 
+    cursor: pointer; }
 
-// .list span {
-//     display: none;
-// }
-
-.title {
-    cursor: pointer;
-}
-
-table{
-    border: 2px;
-}
+    .baseAddButton{
+        cursor: pointer;
+    }
+    
+  .details {
+    cursor: pointer; 
+  }
+  
+  table{
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+  
+  }
+  .oddRow{
+    background-color: #5b83a3;
+  
+  }
+  .evenRow{
+    background-color: #536472;
+  }
+  #deleteBtn{
+    border-width: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+  }
+  tr td {
+    font-size: 16px;
+    color: whitesmoke;
+  }
+  
+  td{
+    align-items: baseline;
+    text-align: left;
+  
+  }

@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>My To-Do App</title>
-        <meta charset="UTF-8" content="html">
-        <link href="./dist/main.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="tasksToolbar" id="tasksToolbar">
-            <div class="tasksToolbar-title" id="tasksToolbar-title">
-                <h2 class="listTitle"><span>Task List</span></h2>
-            </div>
-            <div class="flexBoxFix">
-                <div class="baseAdd loadTask">
-                    <button id="loadButton"  class="loadButton" type="button" aria-label="Load Tasks">Load tasks
-                    </button>
-                </div>
-                <div class="baseAdd addTask">
-                    <input type="text" id="inputTitle" placeholder="Title...">
-                    <input type="text" id="inputDescription" placeholder="Description...">
-                    <input type="date" id="inputDate" placeholder="Due Date...">
-                    <input type="time" id="inputTime" placeholder="Due Time...">
-                    <input type="button" id="addBtn" value="Add Task" >
-                    <!-- <button id="addButton" class="baseAddButton" type="button" aria-label="Add a task">Add a task -->
-                    <!-- </button> -->
-                </div>
-            </div>
 
-            <div class="list" id="list-container">
-             
-            </div>
-            <script src="./js/toDoScript.js"></script>
+<head>
+    <title>My To-Do App</title>
+    <meta charset="UTF-8" content="html">
+    <link href="./dist/main.css" rel="stylesheet">
+</head>
 
+<body>
+    <div class="tasksToolbar" id="tasksToolbar">
+        <div class="tasksToolbar-title" id="tasksToolbar-title">
+            <h2 class="listTitle"><span>My Todo List</span></h2>
         </div>
-    </body>
+
+        <div class="baseAdd loadTask">
+            <button id="loadButton" class="loadButton" type="button" aria-label="Load Tasks">Load Tasks </button>
+        </div>
+
+        <div class="flexBoxFix">
+            <div class="baseAdd addTask" id="form">
+                <input type="text" id="inputTitle" placeholder="Title...">
+                <input type="text" id="inputDescription" placeholder="Description...">
+                <input type="date" id="inputDate" placeholder="Due Date...">
+                <input type="time" id="inputTime" placeholder="Due Time...">
+                <input type="button" id="addBtn" class="baseAddButton" value="Add Task">
+            </div>
+        </div>
+
+    </div>
+    <div class="list" id="list-container">
+    </div>
+    <script src="./js/toDoScript.js"></script>
+
+</body>
+
 </html>

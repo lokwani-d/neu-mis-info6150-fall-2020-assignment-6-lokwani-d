@@ -1,171 +1,122 @@
 const contentsPath = "./../data/list.json";
 
 const container = document.getElementById("list-container");
-const table = document.createElement('table');
-const myList = document.createElement("ul");
+const table = document.createElement("table");
 const addButton = document.getElementById("addBtn");
 const loadButton = document.getElementById("loadButton");
+
 let className, contents, viewButton, dataElementTag;
-let alreadyLoaded = false;
+let alreadyLoaded, oddRow = false;
 
-addButton.addEventListener('click', () => {
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    const summary = document.createElement('summary');
-    const details =  document.createElement('details');
-    summary.innerHTML = document.getElementById('inputTitle').value;
-    details.append("Description: ", document.getElementById('inputDescription').value, document.createElement('br'));
-    details.append("Due Date: ", document.getElementById('inputDate').value, document.createElement('br'));
-    details.append("Due Time: ", document.getElementById('inputTime').value);
+addButton.addEventListener("click", () => {
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id="check";
+  const summary = document.createElement("summary");
+  const details = document.createElement("details");
+  summary.innerHTML = document.getElementById("inputTitle").value;
+  if(summary.innerHTML === null | summary.innerHTML === ""){
+    // alert("Title can't be empty"); 
+    return;
+  }
 
-    this.createRow(checkbox, summary, details);
- 
-    // const table=document.createElement("table");
-    // const tr = document.createElement('tr');
-    // const td1 = document.createElement('td');
-    // const td2 = document.createElement('td');
-    // const td3 = document.createElement('td');
+  details.append(
+    "Description: ",
+    document.getElementById("inputDescription").value,
+    document.createElement("br")
+  );
+  details.append(
+    "Due Date: ",
+    document.getElementById("inputDate").value,
+    document.createElement("br")
+  );
+  details.append("Due Time: ", document.getElementById("inputTime").value);
 
-    
-    // td1.appendChild(checkbox);
-    // td2.appendChild(summary);
-    // td3.appendChild(details);
-    // tr.appendChild(td1);
-    // tr.appendChild(td2);
-    // tr.appendChild(td3);
-    // container.appendChild(tr);
-
+  this.createRow(checkbox, summary, details);
 });
 
-loadButton.addEventListener('click', (evt) => {
-    if(alreadyLoaded){
-        return;
-    }
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', contentsPath);
-    xhr.addEventListener('load', (evt) =>{
-         contents = JSON.parse(evt.target.responseText);
-        populate(contents);
-        alreadyLoaded = !alreadyLoaded;
-    });
-    xhr.send();
+loadButton.addEventListener("click", (evt) => {
+  if (alreadyLoaded) {
+    alert("Tasks already loaded or empty");
+    return;
+  }
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", contentsPath);
+  xhr.addEventListener("load", (evt) => {
+    contents = JSON.parse(evt.target.responseText);
+    populate(contents);
+    alreadyLoaded = !alreadyLoaded;
+  });
+  xhr.send();
 });
-
 
 const populate = (contents) => {
-    contents.forEach(todoItem => {
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        
-        const details =  document.createElement('details');
-        const summary = document.createElement('summary');
+  contents.forEach((todoItem) => {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id="check";
 
-        // const description = document.createElement('p');
-        // const date = document.createElement('p');
-        // const time = document.createElement('p');
-        summary.innerHTML= todoItem.title;
-        // description.innerHTML = todoItem.description;
-        // date.innerHTML = todoItem.date;
-        // time.innerHTML = todoItem.time;
+    const details = document.createElement("details");
+    const summary = document.createElement("summary");
 
-        // details.appendChild(summary);
-        details.append("Description: ", todoItem.description, document.createElement('br'));
-        details.append("Due Date: ", todoItem.date, document.createElement('br'));
-        details.append("Due Time: ", todoItem.time);
-        
-        this.createRow(checkbox, summary, details);
+    summary.innerHTML = todoItem.title;
 
-        // const table=document.createElement("table");
-        // const tr = document.createElement('tr');
-        // const td1 = document.createElement('td');
-        // const td2 = document.createElement('td');
-        // const td3 = document.createElement('td');
+    details.append(
+      "Description: ",
+      todoItem.description,
+      document.createElement("br")
+    );
+    details.append("Due Date: ", todoItem.date, document.createElement("br"));
+    details.append("Due Time: ", todoItem.time);
 
-        
-        // td1.appendChild(checkbox);
-        // td2.appendChild(summary);
-        // td3.appendChild(details);
-        // tr.appendChild(td1);
-        // tr.appendChild(td2);
-        // tr.appendChild(td3);
-        // container.appendChild(tr);
-       
-        
-    });
+    this.createRow(checkbox, summary, details);
+  });
+};
+
+function createRow(checkbox, summary, details) {
+  const tr = document.createElement("tr");
+  if(oddRow){
+      tr.classList.add('oddRow');
+  }
+  else{
+    tr.classList.add('evenRow');
+
+  }
+  const td1 = document.createElement("td");
+  const td2 = document.createElement("td");
+  const td3 = document.createElement("td");
+  const td4 = document.createElement("td");
+
+  
+  let deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.id = "deleteBtn";
+
+  td1.appendChild(checkbox);
+  td2.appendChild(summary);
+  td3.appendChild(details);
+  td4.appendChild(deleteButton);
+
+  td1.style.width = "2%";
+  td2.style.width = "20%";
+  td4.style.width = "20%";
+
+
+  td2.classList.add('title');
+  td3.classList.add('details');
+
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tr.appendChild(td3);
+  tr.appendChild(td4);
+
+  table.appendChild(tr);
+  container.appendChild(table);
+  oddRow=!oddRow;
+
+  deleteButton.addEventListener('click', function(){deleteTask((tr.rowIndex))});
 }
 
-function createRow(checkbox, summary, details){
-    // const table=document.createElement("table");
-    const tr = document.createElement('tr');
-    const td1 = document.createElement('td');
-    const td2 = document.createElement('td');
-    const td3 = document.createElement('td');
-
-    
-    td1.appendChild(checkbox);
-    td2.appendChild(summary);
-    td3.appendChild(details);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    table.appendChild(tr);
-    container.appendChild(table);
+const deleteTask = (row) => {
+    table.deleteRow(row);
 }
-// const populate = (contents) => {
-//     contents.forEach((todoItem, i) => {
-//         row = document.createElement('tr');
-//             col = document.createElement("td");
-//             col.innerHTML = todoItem.title;
-//             col2 = document.createElement("td");
-//             col2.innerHTML = todoItem.description;
-//             col3 = document.createElement("td");
-//             col3.innerHTML = todoItem.date;
-//             col4 = document.createElement("td");
-//             col4.innerHTML = todoItem.time;
-//             col5 = document.createElement('td');
-//             col5btn = document.createElement('input');
-//             col5btn.type ="button";
-//             col5btn.value="View";
-//             col.addEventListener('click', select);
-//             col5.appendChild(col5btn);
-//             row.appendChild(col);
-//             row.appendChild(col2);
-//             row.appendChild(col3);
-//             row.appendChild(col4);
-//             row.appendChild(col5);
-
-
-//         table.appendChild(row);
-//     });
-//     container.appendChild(table);
-// }
-
-// const select = (evt) => {
-//     const target = evt.target;
-//     target.style.backgroundColor = "#69b5e4";
-// }
-
-// const populate = (contents) => {
-//     contents.forEach(Todo => {    
-//         li = document.createElement('li');
-//         li.className = "title";
-//         li.innerHTML = Todo.title;
-//         const span = document.createElement('span');
-//         const textForDescription = document.createTextNode(Todo.Description);
-//         const textForDate = document.createTextNode(Todo.date);
-//         const textFortime = document.createTextNode(Todo.time);
-//         // span.innerHTML =Todo.Description;
-//         span.appendChild(textForDescription); 
-//         span.appendChild(textForDate);
-//         span.appendChild(textFortime);
-//         span.id= Todo.id;
-//         // span.style.visibility = "hidden";
-//         li.appendChild(span);
-//         // container.appendChild(li);   
-//         myList.appendChild(li); 
-//         container.appendChild(myList);   
-//     });   
-// }
-
-
-
